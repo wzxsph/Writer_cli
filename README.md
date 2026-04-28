@@ -4,6 +4,8 @@
 
 > 联系作者：ihao8@qq.com | QQ：1034575997
 
+> 🚀 MiniMax Token Plan 惊喜上线！新增语音、音乐、视频和图片生成权益。邀请好友享双重好礼，助力开发体验！好友立享 9折 专属优惠 + Builder 权益，你赢返利 + 社区特权！👉 立即参与：https://platform.minimaxi.com/subscribe/token-plan?code=JBtwp2z3Vh&source=link
+
 ---
 
 基于 Claude Code 架构的网文自动化生成管线。通过 9 步确定性工程流程，实现无需人工干预的章节批量生成。
