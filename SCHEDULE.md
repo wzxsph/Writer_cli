@@ -10,7 +10,7 @@
 
 ## 当前任务
 
-- volume: VOL_3
-- chapter: 65
+- volume: VOL_4
+- chapter: 101
 - status: READY
-- created_at: 2026-04-28T09:47:04.179497
+- created_at: 2026-04-28T11:03:33.041339

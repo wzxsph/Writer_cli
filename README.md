@@ -50,12 +50,21 @@ python cli.py init
 
 | 必填文件 | 用途 |
 |---------|------|
+| `MANIFEST.md` | **作品元数据**（书名、标签、主角、简介） |
 | `CLAUDE.md` | 世界观规则、主角人设、文风禁区 |
 | `OUTLINE.md` | 小说大纲、每章核心情节点 |
 | `WORLDBUILD.md` | 地理、组织、实体别名 |
 | `POWERSYSTEM.md` | 战力等级体系 |
 | `CHARACTERS.md` | 角色状态表 |
 | `SCHEDULE.md` | 任务调度队列（首章设为 READY） |
+
+> **重要**：`MANIFEST.md` 是必填文件！包含：
+> 1. 书本名称
+> 2. 作品标签（男频/女频、具体标签）
+> 3. 主角名1、2
+> 4. 作品简介
+>
+> 每次写作前必须检查该文件是否已填写完整。
 
 ### 5. 创建章节任务文件
 
@@ -98,6 +107,7 @@ python cli.py generate --vol VOL_1 --chapter 1
 
 | 文件 | 说明 | 格式 |
 |------|------|------|
+| `MANIFEST.md` | **作品元数据**（必填！书名/标签/主角/简介） | Markdown |
 | `CLAUDE.md` | 全局硬规则锁（必读） | Markdown |
 | `OUTLINE.md` | 小说大纲 | Markdown |
 | `WORLDBUILD.md` | 世界观设定 | Markdown |

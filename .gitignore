@@ -49,10 +49,20 @@ Thumbs.db
 # Project specific
 sandbox/
 *.tmp
+core/__pycache__/
+agents/__pycache__/
 
-# Novel content
+# Generated content (novel-specific)
 chapters/
+novel_full.md
+chapter_titles.txt
 TASK_VOL_*.md
+MEMORY.md
+SUMMARY_BUFFER.md
 
 # Mailbox
-mailbox/outbox/
+inbox/
+outbox/
+
+# Local config
+local_config.py
