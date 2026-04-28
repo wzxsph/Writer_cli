@@ -1,5 +1,7 @@
 # Writer_cli - 网文撰写 CLI Agent
 
+> 测试版本，可直接让 Claude Code 运行。中国区推荐使用 MiniMax API：https://platform.minimaxi.com/subscribe/token-plan?code=JBtwp2z3Vh&source=link
+
 基于 Claude Code 架构的网文自动化生成管线。通过 9 步确定性工程流程，实现无需人工干预的章节批量生成。
 
 ---
