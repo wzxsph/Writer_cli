@@ -802,6 +802,92 @@ success, message = orchestrator.run_chapter_loop("VOL_1", 5, "normal")
 
 ---
 
+## 多项目隔离（模板）
+
+本项目支持同时管理多本小说，每本小说完全隔离。
+
+### 使用模板创建新项目
+
+```bash
+# 安装 cookiecutter（如果尚未安装）
+pip install cookiecutter
+
+# 使用远程模板（需要先 push writer_cli_template 到你的 GitHub）
+cookiecutter gh:wzxsph/writer_cli_template
+
+# 或使用本地模板
+cookiecutter /path/to/writer_cli_template
+```
+
+### 创建时输入的信息
+
+```
+book_name: 我的新小说          # 作品名称
+main_character: 主角名         # 男主/主视角角色
+secondary_characters: 女主名   # 女主/副主角
+tags: 玄幻,系统,修真           # 作品标签
+synopsis: 简介...              # 作品简介
+```
+
+### 新项目目录结构
+
+```
+我的新小说/
+├── CLAUDE.md              ← 由 MANIFEST 生成（Claude Code 接口）
+├── CLAUDE.md.template     ← 接口模板
+├── MANIFEST.md            ← 作品元数据（编辑此文件）
+├── OUTLINE.md             ← 小说大纲
+├── chapter_titles.txt     ← 章节标题列表
+├── core/                  ← 生成器核心代码
+├── sandbox/              ← 校验器
+├── agents/               ← Agent 系统
+├── scripts/
+│   ├── generate_claude_md.py  ← 从 MANIFEST 生成 CLAUDE.md
+│   └── init_project.py        ← 项目初始化
+└── chapters/              ← 章节正文
+```
+
+### 工作流程
+
+```
+1. cookiecutter 创建项目
+       ↓
+2. 填写 MANIFEST.md（书名/标签/主角/简介）
+       ↓
+3. python scripts/init_project.py
+   → 生成 CLAUDE.md、SCHEDULE.md、OUTLINE.md 等
+       ↓
+4. Claude Code 加载 CLAUDE.md 开始写作
+       ↓
+5. 如需修改 MANIFEST，运行：
+   python scripts/generate_claude_md.py
+       ↓
+6. 完成 → git push（项目隔离存储）
+```
+
+### 核心原理
+
+| 文件 | 作用 |
+|------|------|
+| `MANIFEST.md` | 结构化的元数据源（书名/标签/主角/简介） |
+| `CLAUDE.md.template` | Claude Code 接口模板 |
+| `generate_claude_md.py` | 读取 MANIFEST 生成定制化 CLAUDE.md |
+| `CLAUDE.md` | Claude Code 实际加载的接口文件 |
+
+**规则**：每次修改 MANIF.md 后，必须重新运行 `generate_claude_md.py` 生成 CLAUDE.md。
+
+### 管理多本小说
+
+每本小说是独立的项目目录，代码零冗余：
+```
+~/novels/
+├── 灵气复苏：我的混沌修炼系统/
+├── 都市异能传/
+└── 仙侠世界/
+```
+
+---
+
 ## 架构原则
 
 > **大模型的输出是原材料，系统的拦截链路才是产品质量的决定因素。**
